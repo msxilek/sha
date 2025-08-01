@@ -1,0 +1,291 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Courier New', cursive;
+  background: black;
+  color: white;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -10;
+}
+
+#shooting-stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -5;
+}
+
+.universe {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-top: 200px; /* lebih tinggi jarak antara title & gambar */
+}
+
+.title {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8em;
+  color: pink;
+  text-shadow: 0 0 10px #ff90e8, 0 0 20px #ffcaff;
+  z-index: 10;
+  pointer-events: none;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+.title.hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Gambar normal */
+.star-wrapper {
+  position: absolute;
+  text-align: center;
+  animation: float 10s infinite ease-in-out;
+  transition: all 0.4s ease;
+  padding: 10px; /* tambah padding antara gambar */
+}
+
+.star-wrapper img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 15px pink;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.caption {
+  margin-top: 5px;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 4px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: 0.3s ease;
+}
+
+.star-wrapper:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* Aktif: tengah + besar */
+.star-wrapper.focused {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) scale(1.8);
+  z-index: 999;
+  position: fixed !important;
+  animation: none !important;
+}
+
+.star-wrapper.focused img {
+  border-radius: 20px;
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  box-shadow: 0 0 40px #ff99cc;
+}
+
+.star-wrapper.focused .caption {
+  opacity: 1;
+  transform: translateY(10px);
+  font-size: 1em;
+  background: rgba(0,0,0,0.7);
+  margin-top: 10px;
+}
+
+/* Semua gambar lain fade */
+.star-wrapper.blur {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 🎬 Layar Permulaan */
+#landing {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: black;
+  color: white;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+}
+
+#landing.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 🎬 Tombol Play */
+#landing h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px pink;
+}
+
+#start-btn {
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  background: pink;
+  color: black;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px pink;
+  transition: 0.3s ease;
+}
+
+#start-btn:hover {
+  background: hotpink;
+  box-shadow: 0 0 15px hotpink;
+}
+
+/* 🌌 Kandungan utama fade in */
+.hidden {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.universe.show {
+  opacity: 1;
+}
+
+#next-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: hotpink;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 15px pink;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#next-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#next-btn:hover {
+  background: deeppink;
+  transform: scale(1.05);
+}
+
+#love-letter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  box-sizing: border-box;
+  z-index: 10000;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+#love-letter.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-content {
+  max-width: 600px;
+  text-align: center;
+  background: rgba(255, 192, 203, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px pink;
+  font-size: 1.1em;
+  line-height: 1.7em;
+  color: pink;
+}
+
+/* ✅ Responsive untuk skrin telefon */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.2em;
+    top: 20px;
+    padding: 0 15px;
+  }
+
+  .universe {
+    padding-top: 150px;
+  }
+
+  .star-wrapper {
+    padding: 5px;
+  }
+
+  .star-wrapper img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .star-wrapper.focused img {
+    width: 200px;
+    height: 140px;
+  }
+
+  .caption {
+    font-size: 0.8em;
+    padding: 3px 8px;
+  }
+
+  #start-btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  #landing h2 {
+    font-size: 1.5em;
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  #next-btn {
+    padding: 10px 18px;
+    font-size: 0.9em;
+    bottom: 20px;
+    right: 20px;
+  }
+}
