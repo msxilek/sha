@@ -178,7 +178,7 @@ body {
 
 #next-btn {
   position: fixed;
-  bottom: 30px;
+  top: 30px;
   right: 30px;
   background: hotpink;
   color: white;
@@ -308,7 +308,8 @@ body {
   }
 
   #next-btn {
-    bottom: 15px;
-    right: 15px;
+  top: 15px;
+  right: 15px;
   }
+
 }
