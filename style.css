@@ -212,32 +212,34 @@ body {
   background: rgba(0, 0, 0, 0.95);
   color: white;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: 20px;
   box-sizing: border-box;
   z-index: 10000;
-  overflow-y: auto;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
+.letter-content {
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: left;
+  background: rgba(255, 192, 203, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px pink;
+  font-size: 1em;
+  line-height: 1.7em;
+  color: pink;
+}
+
+
 #love-letter.show {
   opacity: 1;
   pointer-events: auto;
-}
-
-.letter-content {
-  max-width: 600px;
-  text-align: center;
-  background: rgba(255, 192, 203, 0.1);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px pink;
-  font-size: 1.1em;
-  line-height: 1.7em;
-  color: pink;
 }
 
 /* ✅ Responsive untuk skrin telefon */
@@ -271,9 +273,10 @@ body {
   }
 
   .letter-content {
-    font-size: 1em;
-    padding: 20px;
-    line-height: 1.5em;
+    padding: 15px;
+    font-size: 0.95em;
+    line-height: 1.6em;
+    max-height: 85vh;
   }
 
   #start-btn,
